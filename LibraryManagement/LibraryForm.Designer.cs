@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgv_book = new DataGridView();
-            btn_add = new Button();
             Title = new DataGridViewTextBoxColumn();
             Author = new DataGridViewTextBoxColumn();
             Language = new DataGridViewTextBoxColumn();
@@ -38,6 +38,10 @@
             PublishYear = new DataGridViewTextBoxColumn();
             colDelete = new DataGridViewButtonColumn();
             colEdit = new DataGridViewButtonColumn();
+            btn_add = new Button();
+            txt_search = new TextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv_book).BeginInit();
             SuspendLayout();
             // 
@@ -53,16 +57,6 @@
             dgv_book.Size = new Size(1170, 409);
             dgv_book.TabIndex = 0;
             dgv_book.CellContentClick += dgv_book_CellContentClick;
-            // 
-            // btn_add
-            // 
-            btn_add.Location = new Point(12, 37);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(76, 29);
-            btn_add.TabIndex = 1;
-            btn_add.Text = "+";
-            btn_add.UseVisualStyleBackColor = true;
-            btn_add.Click += btn_add_Click;
             // 
             // Title
             // 
@@ -126,11 +120,48 @@
             colEdit.Name = "colEdit";
             colEdit.Width = 125;
             // 
+            // btn_add
+            // 
+            btn_add.Location = new Point(12, 37);
+            btn_add.Name = "btn_add";
+            btn_add.Size = new Size(76, 29);
+            btn_add.TabIndex = 1;
+            btn_add.Text = "+";
+            btn_add.UseVisualStyleBackColor = true;
+            btn_add.Click += btn_add_Click;
+            // 
+            // txt_search
+            // 
+            txt_search.Location = new Point(118, 39);
+            txt_search.Name = "txt_search";
+            txt_search.RightToLeft = RightToLeft.Yes;
+            txt_search.Size = new Size(1003, 27);
+            txt_search.TabIndex = 2;
+            txt_search.TextChanged += txt_search_TextChanged;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Enabled = false;
+            label1.Location = new Point(866, 42);
+            label1.Name = "label1";
+            label1.Size = new Size(255, 20);
+            label1.TabIndex = 4;
+            label1.Text = "جستجو اسم یا نویسنده یا کد بین المللی";
+            // 
             // LibraryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1170, 481);
+            Controls.Add(label1);
+            Controls.Add(txt_search);
             Controls.Add(btn_add);
             Controls.Add(dgv_book);
             Name = "LibraryForm";
@@ -138,6 +169,7 @@
             Load += LibraryForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_book).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -152,5 +184,8 @@
         private DataGridViewTextBoxColumn PublishYear;
         private DataGridViewButtonColumn colDelete;
         private DataGridViewButtonColumn colEdit;
+        private TextBox txt_search;
+        private ContextMenuStrip contextMenuStrip1;
+        private Label label1;
     }
 }
