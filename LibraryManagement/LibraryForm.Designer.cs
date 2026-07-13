@@ -29,37 +29,29 @@
         private void InitializeComponent()
         {
             dgv_book = new DataGridView();
-            btn_add = new Button();
             Title = new DataGridViewTextBoxColumn();
             Author = new DataGridViewTextBoxColumn();
             Language = new DataGridViewTextBoxColumn();
             ISBN = new DataGridViewTextBoxColumn();
             Category = new DataGridViewTextBoxColumn();
-            Publisharyear = new DataGridViewTextBoxColumn();
+            PublishYear = new DataGridViewTextBoxColumn();
+            btn_add = new Button();
+            colDelete = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgv_book).BeginInit();
             SuspendLayout();
             // 
             // dgv_book
             // 
             dgv_book.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, Publisharyear });
+            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, PublishYear, colDelete });
             dgv_book.Dock = DockStyle.Bottom;
             dgv_book.Location = new Point(0, 72);
             dgv_book.Name = "dgv_book";
+            dgv_book.RightToLeft = RightToLeft.Yes;
             dgv_book.RowHeadersWidth = 51;
-            dgv_book.Size = new Size(1030, 409);
+            dgv_book.Size = new Size(979, 409);
             dgv_book.TabIndex = 0;
             dgv_book.CellContentClick += dgv_book_CellContentClick;
-            // 
-            // btn_add
-            // 
-            btn_add.Location = new Point(12, 37);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(76, 29);
-            btn_add.TabIndex = 1;
-            btn_add.Text = "+";
-            btn_add.UseVisualStyleBackColor = true;
-            btn_add.Click += btn_add_Click;
             // 
             // Title
             // 
@@ -101,19 +93,36 @@
             Category.Name = "Category";
             Category.Width = 125;
             // 
-            // Publisharyear
+            // PublishYear
             // 
-            Publisharyear.DataPropertyName = "Publisharyear";
-            Publisharyear.HeaderText = "سال انتشار";
-            Publisharyear.MinimumWidth = 6;
-            Publisharyear.Name = "Publisharyear";
-            Publisharyear.Width = 125;
+            PublishYear.DataPropertyName = "PublishYear";
+            PublishYear.HeaderText = "سال انتشار";
+            PublishYear.MinimumWidth = 6;
+            PublishYear.Name = "PublishYear";
+            PublishYear.Width = 125;
+            // 
+            // btn_add
+            // 
+            btn_add.Location = new Point(12, 37);
+            btn_add.Name = "btn_add";
+            btn_add.Size = new Size(76, 29);
+            btn_add.TabIndex = 1;
+            btn_add.Text = "+";
+            btn_add.UseVisualStyleBackColor = true;
+            btn_add.Click += btn_add_Click;
+            // 
+            // colDelete
+            // 
+            colDelete.HeaderText = "حذف";
+            colDelete.MinimumWidth = 6;
+            colDelete.Name = "colDelete";
+            colDelete.Width = 125;
             // 
             // LibraryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1030, 481);
+            ClientSize = new Size(979, 481);
             Controls.Add(btn_add);
             Controls.Add(dgv_book);
             Name = "LibraryForm";
@@ -132,6 +141,7 @@
         private DataGridViewTextBoxColumn Language;
         private DataGridViewTextBoxColumn ISBN;
         private DataGridViewTextBoxColumn Category;
-        private DataGridViewTextBoxColumn Publisharyear;
+        private DataGridViewTextBoxColumn PublishYear;
+        private DataGridViewButtonColumn colDelete;
     }
 }

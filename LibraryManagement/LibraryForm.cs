@@ -31,7 +31,29 @@ namespace LibraryManagement
 
         private void dgv_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+           if (e.RowIndex < 0)
+                return;
 
+            if (e.ColumnIndex == dgv_book.Columns["colDelete"].Index)
+            {
+                int id = (int)dgv_book.Rows[e.RowIndex].Cells["Id"].Value;
+                DialogResult result = MessageBox.Show(
+                 "آیا از حذف این کتاب مطمئن هستید؟",
+                 "حذف کتاب",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) 
+                    {
+                    libraryManager.RemoveBook(id);
+                    dgv_book.DataSource = libraryManager.GetBooK();
+                    dgv_book.Refresh();
+                     }
+            }
+
+                  
         }
+    
     }
 }
