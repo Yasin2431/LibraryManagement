@@ -51,8 +51,28 @@ namespace LibraryManagement
                     dgv_book.Refresh();
                      }
             }
+            if (e.RowIndex < 0)
+                return;
 
-                  
+            if (e.ColumnIndex == dgv_book.Columns["colEdit"].Index)
+            {
+                int id = (int)dgv_book.Rows[e.RowIndex].Cells["Id"].Value;
+                DialogResult result = MessageBox.Show(
+                 "آیا از ویرایش این کتاب مطمئن هستید؟",
+                 "ویرایش کتاب",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    AddForm editForm = new AddForm(id);
+                    editForm.ShowDialog();
+                }
+                dgv_book.DataSource = libraryManager.GetBooK();
+                dgv_book.Refresh();
+            }
+
+
         }
     
     }
