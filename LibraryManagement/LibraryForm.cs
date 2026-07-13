@@ -11,6 +11,24 @@ namespace LibraryManagement
     public partial class LibraryForm : Form
     {
         LibraryManager libraryManager = new LibraryManager();
+        public List<IBook> SearchBook(string text)
+        {
+            List<IBook> books = libraryManager.GetBooK();
+
+            if (books == null)
+                return new List<IBook>();
+
+            if (string.IsNullOrWhiteSpace(text))
+                return books;
+
+            text = text.ToLower();
+
+            return books.Where(x =>
+                x.Title.ToLower().Contains(text) ||
+                x.Author.ToLower().Contains(text) ||
+                x.ISBN.Contains(text)
+            ).ToList();
+        }
         public LibraryForm()
         {
             InitializeComponent();
@@ -31,8 +49,8 @@ namespace LibraryManagement
 
         private void dgv_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-           if (e.RowIndex < 0)
+
+            if (e.RowIndex < 0)
                 return;
 
             if (e.ColumnIndex == dgv_book.Columns["colDelete"].Index)
@@ -44,12 +62,12 @@ namespace LibraryManagement
                  MessageBoxButtons.YesNo,
                  MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes) 
-                    {
+                if (result == DialogResult.Yes)
+                {
                     libraryManager.RemoveBook(id);
                     dgv_book.DataSource = libraryManager.GetBooK();
                     dgv_book.Refresh();
-                     }
+                }
             }
             if (e.RowIndex < 0)
                 return;
@@ -73,6 +91,14 @@ namespace LibraryManagement
             }
 
 
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            label1.Visible = false;
+
+            dgv_book.DataSource = SearchBook(txt_search.Text);
+            dgv_book.Refresh();
         }
     
     }
