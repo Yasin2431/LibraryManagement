@@ -49,6 +49,10 @@ namespace LibraryManagement
                 Book.Remove(book);
             }
         }
+        public IBook EditBook(int id)
+        {
+            return Book.Find(x => x.Id == id);
+        }
 
 
     }
