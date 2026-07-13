@@ -10,6 +10,7 @@ namespace LibraryManagement
 {
     public partial class LibraryForm : Form
     {
+        LibraryManager libraryManager = new LibraryManager();
         public LibraryForm()
         {
             InitializeComponent();
@@ -19,13 +20,18 @@ namespace LibraryManagement
         {
             AddForm addForm = new AddForm();
             addForm.ShowDialog();
-           
-            dgv_book.DataSource = AddForm.Book.ToList();
+
+            dgv_book.DataSource = libraryManager.GetBooK().ToList();
         }
 
         private void LibraryForm_Load(object sender, EventArgs e)
         {
-           
+
+        }
+
+        private void dgv_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

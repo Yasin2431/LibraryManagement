@@ -44,7 +44,8 @@ namespace LibraryManagement
 
                 cmb_pulisheryear.Items.Add(year.ToString());
             }
-        public static List<IBook> Book = new List<IBook>();
+         List<IBook> Book = new List<IBook>();
+        LibraryManager libraryManager = new LibraryManager();
         private void AddForm_Load(object sender, EventArgs e)
         {
             if (Book == null || Book.Count == 0)
@@ -55,15 +56,46 @@ namespace LibraryManagement
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (txt_title.Text.Length == 0 && txt_author.Text.Length == 0 && txt_isbn.Text.Length == 0)
+            string[] errors = libraryManager.Validation(
+                                txt_title.Text,
+                                txt_author.Text,
+                                txt_isbn.Text);
+
+            panel1.BackColor = Color.White;
+            panel2.BackColor = Color.White;
+            panel3.BackColor = Color.White;
+
+            if (errors.Length > 0)
             {
-                MessageBox.Show("لطفا پر کنید ");
-                panel1.BackColor = Color.Firebrick;
-                panel2.BackColor = Color.Firebrick;
-                panel3.BackColor = Color.Firebrick;
-                label1.BackColor = Color.LightGray;
-                label2.BackColor = Color.LightGray;
-                label4.BackColor = Color.LightGray;
+                MessageBox.Show("لطفاً اطلاعات را کامل وارد کنید.");
+
+                foreach (string error in errors)
+                {
+                    switch (error)
+                    {
+                        case "Title":
+                            MessageBox.Show("نام اثر را وارد کنید .");
+                            panel3.BackColor = Color.Firebrick;
+                            break;
+
+                        case "Author":
+                            MessageBox.Show("نام نویسنده را وارد کنید .");
+                            panel2.BackColor = Color.Firebrick;
+                            break;
+
+                        case "ISBN":
+                            MessageBox.Show("کد 13 رقمی بین المللی کتاب را وارد کنید .");
+                            panel1.BackColor = Color.Firebrick;
+                            break;
+                        case "IsbnAgain":
+                            MessageBox.Show("کد بین المللی کتاب نباید تکراری باشد .");
+                            panel1.BackColor = Color.Firebrick;
+                            break;
+
+                    }
+                }
+
+                return;
             }
 
             IBook book = new IBook(txt_title.Text, txt_author.Text, txt_isbn.Text);
@@ -71,17 +103,17 @@ namespace LibraryManagement
             book.Category = cmb_category.SelectedItem?.ToString() ?? "خالی";
             book.PublishYear = cmb_pulisheryear.SelectedItem?.ToString() ?? "خالی";
 
-            int Countbook = Book.Count;
-            int id;
-            if (Book.Count > 0)
-                id = Book[Countbook - 1].Id;
-            else
-                id = 0;
+            List<IBook> books = libraryManager.GetBooK();
 
-            id++;
+            int id = 1;
+
+            if (books != null && books.Count > 0)
+            {
+                id = books[books.Count - 1].Id + 1;
+            }
 
             book.Id = id;
-            Book.Add(book);
+            libraryManager.AddBook(book);
             MessageBox.Show("اطلاعات ذخیره شد");
 
         }

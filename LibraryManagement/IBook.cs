@@ -13,25 +13,13 @@ namespace LibraryManagement
             ISBN = iSBN;
         }
 
-        private string Title { get; set; }
-        private string Author { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
         public string Language { get; set; }
-        private string ISBN
-        {
-            get { return ISBN; }
-            set { ISBN = value; }
-        }
+        public String ISBN {  get; set; }
         public string Category { get; set; }
         public string PublishYear { get; set; }
         public int Id {  get; set; }
-        public Result Validate()
-        {
-            if (ISBN.Length != 13)
-            {
-                return Result.Failed("کدISBN نامعتبر");
-            }
-
-            return Result.Ok();
-        }
+        
     }
 }
