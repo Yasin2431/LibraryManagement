@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="LibraryManagement/LibraryManagement.csproj" />
+  <Project Path="BLL_Library/BLL_Library.csproj" Id="6ae3e58f-e477-4783-8e2f-826ce55473f0" />
+  <Project Path="DAL_Library/DAL_Library.csproj" Id="aee48bc6-83ff-4ad2-934a-f1103db25c7f" />
+  <Project Path="LibraryManagement/UI.csproj" />
 </Solution>
