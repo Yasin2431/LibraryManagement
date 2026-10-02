@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             txt_title = new TextBox();
             txt_author = new TextBox();
             cmb_language = new ComboBox();
@@ -207,6 +208,7 @@
             Controls.Add(cmb_language);
             Controls.Add(txt_author);
             Controls.Add(txt_title);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddForm";
             Text = "AddForm";
             Load += AddForm_Load;

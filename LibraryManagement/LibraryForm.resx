@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -141,7 +141,87 @@
   <metadata name="colEdit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA
+        GAPGPTMASKTOKENlebvqvfmnedX0X
+        GAPGPTMASKTOKENlebvqvfmnedX1X
+        GAPGPTMASKTOKENlebvqvfmnedX2X
+        GAPGPTMASKTOKENlebvqvfmnedX3X
+        GAPGPTMASKTOKENlebvqvfmnedX4X
+        GAPGPTMASKTOKENlebvqvfmnedX5X
+        GAPGPTMASKTOKENlebvqvfmnedX6X
+        GAPGPTMASKTOKENlebvqvfmnedX7X
+        GAPGPTMASKTOKENlebvqvfmnedX8X
+        GAPGPTMASKTOKENlebvqvfmnedX9X
+        GAPGPTMASKTOKENlebvqvfmnedX10X
+        GAPGPTMASKTOKENlebvqvfmnedX11X
+        GAPGPTMASKTOKENlebvqvfmnedX12X
+        GAPGPTMASKTOKENlebvqvfmnedX13X
+        GAPGPTMASKTOKENlebvqvfmnedX14X
+        GAPGPTMASKTOKENlebvqvfmnedX15X
+        GAPGPTMASKTOKENlebvqvfmnedX16X
+        GAPGPTMASKTOKENlebvqvfmnedX17X
+        GAPGPTMASKTOKENlebvqvfmnedX18X
+        GAPGPTMASKTOKENlebvqvfmnedX19X
+        GAPGPTMASKTOKENlebvqvfmnedX20X
+        GAPGPTMASKTOKENlebvqvfmnedX21X
+        GAPGPTMASKTOKENlebvqvfmnedX22X
+        GAPGPTMASKTOKENlebvqvfmnedX23X
+        GAPGPTMASKTOKENlebvqvfmnedX24X
+        GAPGPTMASKTOKENlebvqvfmnedX25X
+        GAPGPTMASKTOKENlebvqvfmnedX26X
+        GAPGPTMASKTOKENlebvqvfmnedX27X
+        GAPGPTMASKTOKENlebvqvfmnedX28X
+        GAPGPTMASKTOKENlebvqvfmnedX29X
+        GAPGPTMASKTOKENlebvqvfmnedX30X
+        GAPGPTMASKTOKENlebvqvfmnedX31X
+        GAPGPTMASKTOKENlebvqvfmnedX32X
+        GAPGPTMASKTOKENlebvqvfmnedX33X
+        GAPGPTMASKTOKENlebvqvfmnedX34X
+        GAPGPTMASKTOKENlebvqvfmnedX35X
+        GAPGPTMASKTOKENlebvqvfmnedX36X
+        GAPGPTMASKTOKENlebvqvfmnedX37X
+        GAPGPTMASKTOKENlebvqvfmnedX38X
+        GAPGPTMASKTOKENlebvqvfmnedX39X
+        GAPGPTMASKTOKENlebvqvfmnedX40X
+        GAPGPTMASKTOKENlebvqvfmnedX41X
+        GAPGPTMASKTOKENlebvqvfmnedX42X
+        GAPGPTMASKTOKENlebvqvfmnedX43X
+        3P+WuOv/rMr1/5265/+fv+//z+P+/9Ph/P/F2Pr/zur+/9/l+v/nz/L/6df3/9rK8f/7yKT//dqw//3d
+        GAPGPTMASKTOKENlebvqvfmnedX44X
+        GAPGPTMASKTOKENlebvqvfmnedX45X
+        GAPGPTMASKTOKENlebvqvfmnedX46X
+        GAPGPTMASKTOKENlebvqvfmnedX47X
+        GAPGPTMASKTOKENlebvqvfmnedX48X
+        GAPGPTMASKTOKENlebvqvfmnedX49X
+        GAPGPTMASKTOKENlebvqvfmnedX50X
+        GAPGPTMASKTOKENlebvqvfmnedX51X
+        GAPGPTMASKTOKENlebvqvfmnedX52X
+        GAPGPTMASKTOKENlebvqvfmnedX53X
+        GAPGPTMASKTOKENlebvqvfmnedX54X
+        GAPGPTMASKTOKENlebvqvfmnedX55X
+        /f+as///rLv4//a+1//vudn/8L3d//C/3//vv+H/883s/9y62P/Ps5n//9mz//zeu//95cb//+jO//nr
+        1/9sjuj/cpDx/6XD+v/r7O3//+jX//vi2P/839b//tzV///Z0v//1c///9LO///My///xsj/+cfQ/4+2
+        9/+uxPz/ucj8/3+j//+3uPD/+7nS//C42P/yu9v/8r/f/++83v/72fP/vqO7/3lwZv//4b7/+NWy//3l
+        xv/8587//+7U/8fU7v+3zvf/8u7o///q2P/75dn//eLX//3e1v/829X//NfU//zT0v/7z8//+8rM//nF
+        y///wMX/0MHf/5W7//+ltvv/b5r//9a33//5ss7/8bXW//O42f/yutz/7r3d///r/v9tW2z/CgsL/8y+
+        sP//6cf/+dq7//zkyv/96ND//+/Y///w2v/+6db//ObZ//3k1//94Nb//dzV//3Y0//91NH//dDO//3L
+        zP/8xsn/+8DG//m6xf/8ucX/rsDx/26c//95l/L/9rPN//OszP/zsNL/8a/T/+6y1v//8///xLbE/wgE
+        GAPGPTMASKTOKENlebvqvfmnedX56X
+        z//9zMz//MfJ//zCx//7vcX/+bnF//u0w//zuMv/obTv/82x3P/8rcb/867N//W01P/7yOT///D//8zB
+        GAPGPTMASKTOKENlebvqvfmnedX57X
+        0//919P//dTS//zR0f/8zs///MvP//vIz//6xM7/+cLP//q+zP//w8//+7/Q//W70f/1v9X/8cTZ/9O5
+        yP95bnf/DAoM/wAAAP8CAgL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
 </root>

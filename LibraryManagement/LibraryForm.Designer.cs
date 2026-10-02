@@ -1,4 +1,4 @@
-﻿namespace LibraryManagement
+namespace LibraryManagement
 {
     partial class LibraryForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
             dgv_book = new DataGridView();
             Title = new DataGridViewTextBoxColumn();
             Author = new DataGridViewTextBoxColumn();
@@ -38,6 +39,7 @@
             PublishYear = new DataGridViewTextBoxColumn();
             colDelete = new DataGridViewButtonColumn();
             colEdit = new DataGridViewButtonColumn();
+            Id = new DataGridViewTextBoxColumn();
             btn_add = new Button();
             txt_search = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
@@ -47,14 +49,15 @@
             // 
             // dgv_book
             // 
+            dgv_book.BackgroundColor = SystemColors.ActiveBorder;
             dgv_book.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, PublishYear, colDelete, colEdit });
+            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, PublishYear, colDelete, colEdit, Id });
             dgv_book.Dock = DockStyle.Bottom;
             dgv_book.Location = new Point(0, 72);
             dgv_book.Name = "dgv_book";
             dgv_book.RightToLeft = RightToLeft.Yes;
             dgv_book.RowHeadersWidth = 51;
-            dgv_book.Size = new Size(1170, 409);
+            dgv_book.Size = new Size(1024, 405);
             dgv_book.TabIndex = 0;
             dgv_book.CellContentClick += dgv_book_CellContentClick;
             // 
@@ -120,9 +123,18 @@
             colEdit.Name = "colEdit";
             colEdit.Width = 125;
             // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.Visible = false;
+            Id.Width = 125;
+            // 
             // btn_add
             // 
-            btn_add.Location = new Point(12, 37);
+            btn_add.Location = new Point(12, 33);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(76, 29);
             btn_add.TabIndex = 1;
@@ -132,10 +144,10 @@
             // 
             // txt_search
             // 
-            txt_search.Location = new Point(118, 39);
+            txt_search.Location = new Point(94, 33);
             txt_search.Name = "txt_search";
             txt_search.RightToLeft = RightToLeft.Yes;
-            txt_search.Size = new Size(1003, 27);
+            txt_search.Size = new Size(799, 27);
             txt_search.TabIndex = 2;
             txt_search.TextChanged += txt_search_TextChanged;
             // 
@@ -149,7 +161,7 @@
             // 
             label1.AutoSize = true;
             label1.Enabled = false;
-            label1.Location = new Point(866, 42);
+            label1.Location = new Point(638, 33);
             label1.Name = "label1";
             label1.Size = new Size(255, 20);
             label1.TabIndex = 4;
@@ -159,11 +171,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1170, 481);
+            ClientSize = new Size(1024, 482);
             Controls.Add(label1);
             Controls.Add(txt_search);
             Controls.Add(btn_add);
             Controls.Add(dgv_book);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LibraryForm";
             Text = "LibraryForm";
             Load += LibraryForm_Load;
@@ -176,6 +189,9 @@
 
         private DataGridView dgv_book;
         private Button btn_add;
+        private TextBox txt_search;
+        private ContextMenuStrip contextMenuStrip1;
+        private Label label1;
         private DataGridViewTextBoxColumn Title;
         private DataGridViewTextBoxColumn Author;
         private DataGridViewTextBoxColumn Language;
@@ -184,8 +200,6 @@
         private DataGridViewTextBoxColumn PublishYear;
         private DataGridViewButtonColumn colDelete;
         private DataGridViewButtonColumn colEdit;
-        private TextBox txt_search;
-        private ContextMenuStrip contextMenuStrip1;
-        private Label label1;
+        private DataGridViewTextBoxColumn Id;
     }
 }
