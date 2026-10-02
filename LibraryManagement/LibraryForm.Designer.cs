@@ -1,4 +1,4 @@
-﻿namespace LibraryManagement
+namespace LibraryManagement
 {
     partial class LibraryForm
     {
@@ -28,21 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< Updated upstream
-=======
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LibraryForm));
->>>>>>> Stashed changes
             dgv_book = new DataGridView();
-            btn_add = new Button();
             Title = new DataGridViewTextBoxColumn();
             Author = new DataGridViewTextBoxColumn();
             Language = new DataGridViewTextBoxColumn();
             ISBN = new DataGridViewTextBoxColumn();
             Category = new DataGridViewTextBoxColumn();
-<<<<<<< Updated upstream
-            Publisharyear = new DataGridViewTextBoxColumn();
-=======
             PublishYear = new DataGridViewTextBoxColumn();
             colDelete = new DataGridViewButtonColumn();
             colEdit = new DataGridViewButtonColumn();
@@ -51,7 +44,6 @@
             txt_search = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             label1 = new Label();
->>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)dgv_book).BeginInit();
             SuspendLayout();
             // 
@@ -59,34 +51,15 @@
             // 
             dgv_book.BackgroundColor = SystemColors.ActiveBorder;
             dgv_book.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-<<<<<<< Updated upstream
-            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, Publisharyear });
+            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, PublishYear, colDelete, colEdit, Id });
             dgv_book.Dock = DockStyle.Bottom;
             dgv_book.Location = new Point(0, 72);
-=======
-            dgv_book.Columns.AddRange(new DataGridViewColumn[] { Title, Author, Language, ISBN, Category, PublishYear, colDelete, colEdit, Id });
-            dgv_book.GridColor = Color.RosyBrown;
-            dgv_book.Location = new Point(-55, 86);
->>>>>>> Stashed changes
             dgv_book.Name = "dgv_book";
+            dgv_book.RightToLeft = RightToLeft.Yes;
             dgv_book.RowHeadersWidth = 51;
-<<<<<<< Updated upstream
-            dgv_book.Size = new Size(1030, 409);
-=======
             dgv_book.Size = new Size(1024, 405);
->>>>>>> Stashed changes
             dgv_book.TabIndex = 0;
             dgv_book.CellContentClick += dgv_book_CellContentClick;
-            // 
-            // btn_add
-            // 
-            btn_add.Location = new Point(12, 37);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(76, 29);
-            btn_add.TabIndex = 1;
-            btn_add.Text = "+";
-            btn_add.UseVisualStyleBackColor = true;
-            btn_add.Click += btn_add_Click;
             // 
             // Title
             // 
@@ -128,15 +101,8 @@
             Category.Name = "Category";
             Category.Width = 125;
             // 
-            // Publisharyear
+            // PublishYear
             // 
-<<<<<<< Updated upstream
-            Publisharyear.DataPropertyName = "Publisharyear";
-            Publisharyear.HeaderText = "سال انتشار";
-            Publisharyear.MinimumWidth = 6;
-            Publisharyear.Name = "Publisharyear";
-            Publisharyear.Width = 125;
-=======
             PublishYear.DataPropertyName = "PublishYear";
             PublishYear.HeaderText = "سال انتشار";
             PublishYear.MinimumWidth = 6;
@@ -200,19 +166,14 @@
             label1.Size = new Size(255, 20);
             label1.TabIndex = 4;
             label1.Text = "جستجو اسم یا نویسنده یا کد بین المللی";
->>>>>>> Stashed changes
             // 
             // LibraryForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-<<<<<<< Updated upstream
-            ClientSize = new Size(1030, 481);
-=======
-            ClientSize = new Size(919, 482);
+            ClientSize = new Size(1024, 482);
             Controls.Add(label1);
             Controls.Add(txt_search);
->>>>>>> Stashed changes
             Controls.Add(btn_add);
             Controls.Add(dgv_book);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -221,6 +182,7 @@
             Load += LibraryForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_book).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -235,13 +197,9 @@
         private DataGridViewTextBoxColumn Language;
         private DataGridViewTextBoxColumn ISBN;
         private DataGridViewTextBoxColumn Category;
-<<<<<<< Updated upstream
-        private DataGridViewTextBoxColumn Publisharyear;
-=======
         private DataGridViewTextBoxColumn PublishYear;
         private DataGridViewButtonColumn colDelete;
         private DataGridViewButtonColumn colEdit;
         private DataGridViewTextBoxColumn Id;
->>>>>>> Stashed changes
     }
 }

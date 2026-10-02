@@ -1,28 +1,17 @@
-﻿using BLL_Library;
+using BLL_Library;
 using System;
 using System.Drawing;
-<<<<<<< Updated upstream
-using System.Security.Policy;
-using System.Text;
-=======
->>>>>>> Stashed changes
 using System.Windows.Forms;
 
 namespace LibraryManagement
 {
     public partial class AddForm : Form
     {
-<<<<<<< Updated upstream
-        public AddForm()
-        {
-           
-=======
         private readonly int _id;
         private readonly bool _isEdit;
         private readonly string _database;
         private BLL_Service _bookService; // استفاده از سرویس لایه BLL
 
-         
         private static readonly object[] Languages = new object[] {
             "Persian", "English", "Arabic", "French", "German",
             "Russian", "Chinese", "Spanish", "Turkish", "Italian",
@@ -38,42 +27,12 @@ namespace LibraryManagement
         public AddForm(string database, int id = 0, bool edit = false)
         {
             this.DoubleBuffered = true;
->>>>>>> Stashed changes
             InitializeComponent();
-
-<<<<<<< Updated upstream
-            string[] category = {
-                    "علمی و آموزشی",
-                    "داستانی و رمان",
-                    "تاریخی",
-                    "ادبی",
-                    "آموزش مهارت",
-                    "خودشناسی و روانشناسی",
-                    "مذهبی",
-                    "کودک و نوجوان",
-                    "هنری",
-                    "جغرافیایی",
-                    "بیوگرافی",
-                    "فلسفی",
-                    "جنایی و معمایی",
-                    "علمی تخیلی"
-                };
-            cmb_category.Items.Clear();
-            cmb_category .Items.AddRange(category);
-            cmb_pulisheryear.Items.Clear();
-            for (int year = 1370; year <= 1405; year++)
-
-                cmb_pulisheryear.Items.Add(year.ToString());
-            }
-         List<IBook> Book = new List<IBook>();
-        LibraryManager libraryManager = new LibraryManager();
-=======
             _database = database;
             _id = id;
             _isEdit = edit || (id > 0);
         }
 
->>>>>>> Stashed changes
         private void AddForm_Load(object sender, EventArgs e)
         {
             // مقداردهی سرویس BLL بر اساس نوع دیتابیس
@@ -129,14 +88,11 @@ namespace LibraryManagement
                     MessageBox.Show("خطا در دریافت اطلاعات: " + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-<<<<<<< Updated upstream
-=======
             else
             {
                 this.Text = "افزودن کتاب جدید";
                 btn_add.Text = "افزودن";
             }
->>>>>>> Stashed changes
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -215,14 +171,6 @@ namespace LibraryManagement
             {
                 MessageBox.Show("خطای غیرمنتظره:\n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-<<<<<<< Updated upstream
-
-            book.Id = id;
-            libraryManager.AddBook(book);
-            MessageBox.Show("اطلاعات ذخیره شد");
-
-=======
->>>>>>> Stashed changes
         }
     }
 }

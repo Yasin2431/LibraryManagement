@@ -40,6 +40,19 @@ namespace LibraryManagement
             
             return errors.ToArray();
         }
+        public void RemoveBook(int id)
+        {
+            IBook book = Book.Find(x => x.Id == id);
+
+            if (book != null)
+            {
+                Book.Remove(book);
+            }
+        }
+        public IBook EditBook(int id)
+        {
+            return Book.Find(x => x.Id == id);
+        }
 
 
     }

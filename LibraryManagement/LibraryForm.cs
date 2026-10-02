@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,20 +9,6 @@ namespace LibraryManagement
 {
     public partial class LibraryForm : Form
     {
-<<<<<<< Updated upstream
-        LibraryManager libraryManager = new LibraryManager();
-        public LibraryForm()
-        {
-            InitializeComponent();
-        }
-
-        private void btn_add_Click(object sender, EventArgs e)
-        {
-            AddForm addForm = new AddForm();
-            addForm.ShowDialog();
-
-            dgv_book.DataSource = libraryManager.GetBooK().ToList();
-=======
         private readonly string _database;
         private readonly IBookRepository _repository;
         private List<IBook> _cachedBooks = new List<IBook>();
@@ -135,7 +121,6 @@ namespace LibraryManagement
                 (!string.IsNullOrEmpty(x.Author) && x.Author.ToLower().Contains(text)) ||
                 (!string.IsNullOrEmpty(x.ISBN) && x.ISBN.Contains(text))
             ).ToList();
->>>>>>> Stashed changes
         }
 
         private void LibraryForm_Load(object sender, EventArgs e)
@@ -147,7 +132,6 @@ namespace LibraryManagement
         {
             using (AddForm addForm = new AddForm(_database))
             {
-
                 if (addForm.ShowDialog() == DialogResult.OK)
                 {
                     LoadBooks();
@@ -157,48 +141,47 @@ namespace LibraryManagement
 
         private void dgv_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-<<<<<<< Updated upstream
-
-        }
-=======
             if (e.RowIndex < 0)
                 return;
 
-            // دریافت امن Id سطر
-            var cellValue = dgv_book.Rows[e.RowIndex].Cells["Id"].Value;
-            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int id))
-                return;
-
-            // حذف کتاب
+            // عملیات حذف
             if (dgv_book.Columns["colDelete"] != null && e.ColumnIndex == dgv_book.Columns["colDelete"].Index)
             {
-                DialogResult result = MessageBox.Show(
-                    "آیا از حذف این کتاب مطمئن هستید؟",
-                    "حذف کتاب",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
+                if (dgv_book.Rows[e.RowIndex].Cells["Id"].Value is int id)
                 {
-                    try
+                    DialogResult result = MessageBox.Show(
+                        "آیا از حذف این کتاب مطمئن هستید؟",
+                        "حذف کتاب",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (result == DialogResult.Yes)
                     {
-                        _repository.DeleteBook(id);
-                        LoadBooks();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("خطا در حذف کتاب: " + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            _repository.RemoveBook(id);
+                            LoadBooks();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("خطا در حذف کتاب: " + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                return;
             }
-            // ویرایش کتاب
-            else if (dgv_book.Columns["colEdit"] != null && e.ColumnIndex == dgv_book.Columns["colEdit"].Index)
+
+            // عملیات ویرایش
+            if (dgv_book.Columns["colEdit"] != null && e.ColumnIndex == dgv_book.Columns["colEdit"].Index)
             {
-                using (AddForm editForm = new AddForm(_database, id, true))
+                if (dgv_book.Rows[e.RowIndex].Cells["Id"].Value is int id)
                 {
-                    if (editForm.ShowDialog() == DialogResult.OK)
+                    using (AddForm editForm = new AddForm(_database, id, true))
                     {
-                        LoadBooks();
+                        if (editForm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadBooks();
+                        }
                     }
                 }
             }
@@ -214,6 +197,5 @@ namespace LibraryManagement
         {
             e.Cancel = true;
         }
->>>>>>> Stashed changes
     }
 }
