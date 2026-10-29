@@ -8,17 +8,17 @@ namespace LibraryManagement
 {
     internal class LibraryManager
     {
-        private static List<IBook> Book = new List<IBook>();
+        private static List<Book> Book = new List<Book>();
 
-        public void AddBook(IBook book)
+        public void AddBook(Book book)
         {
             if (Book == null)
-                Book = new List<IBook>();
+                Book = new List<Book>();
 
             Book.Add(book);
         }
         
-        public List<IBook> GetBooK()
+        public List<Book> GetBooK()
         {
             return Book;
         }
@@ -42,14 +42,14 @@ namespace LibraryManagement
         }
         public void RemoveBook(int id)
         {
-            IBook book = Book.Find(x => x.Id == id);
+            Book book = Book.Find(x => x.Id == id);
 
             if (book != null)
             {
                 Book.Remove(book);
             }
         }
-        public IBook EditBook(int id)
+        public Book EditBook(int id)
         {
             return Book.Find(x => x.Id == id);
         }

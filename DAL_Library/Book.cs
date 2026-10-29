@@ -4,9 +4,9 @@ using System.Text;
 
 namespace LibraryManagement
 {
-    public class IBook
+    public class Book
     {
-        public IBook(string title, string author, string iSBN)
+        public Book(string title, string author, string iSBN)
         {
             Title = title;
             Author = author;
@@ -20,6 +20,8 @@ namespace LibraryManagement
         public string Category { get; set; }
         public string PublishYear { get; set; }
         public int Id {  get; set; }
-        
+        public Book() { }
+
+
     }
 }

@@ -11,31 +11,22 @@ namespace LibraryManagement
     {
         private readonly string _database;
         private readonly IBookRepository _repository;
-        private List<IBook> _cachedBooks = new List<IBook>();
+        private List<Book> _cachedBooks = new List<Book>();
 
-        // حذف کامل پرش و لگ‌های رندر UI و فرم در ویندوز فرمز
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
-                return cp;
-            }
-        }
+       
 
         public LibraryForm(string database)
         {
             this.DoubleBuffered = true;
             InitializeComponent();
 
-            // فعال‌سازی DoubleBuffered برای DataGridView جهت روان‌سازی کامل اسکرول
+        
             EnableDoubleBuffer(dgv_book);
 
             dgv_book.AutoGenerateColumns = false;
             _database = database;
 
-            // انتخاب نوع دیتابیس
+        
             if (_database == "SQL")
             {
                 _repository = new SqlBookRepository();
@@ -80,36 +71,36 @@ namespace LibraryManagement
             }
         }
 
-        // بارگذاری و کش کردن داده‌ها
+       
         private void LoadBooks()
         {
             try
             {
-                _cachedBooks = _repository.GetAllBooks() ?? new List<IBook>();
+                _cachedBooks = _repository.GetAllBooks() ?? new List<Book>();
             }
             catch (Exception ex)
             {
-                _cachedBooks = new List<IBook>();
+                _cachedBooks = new List<Book>();
                 MessageBox.Show("خطا در دریافت لیست کتاب‌ها: " + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             ApplyFilterAndBind();
         }
 
-        // اعمال فیلتر سرچ و نمایش در گرید
+       
         private void ApplyFilterAndBind()
         {
             string searchText = txt_search.Text?.Trim();
-            List<IBook> filteredList = SearchBook(searchText);
+            List<Book> filteredList = SearchBook(searchText);
 
             dgv_book.DataSource = null;
             dgv_book.DataSource = filteredList;
         }
 
-        public List<IBook> SearchBook(string text)
+        public List<Book> SearchBook(string text)
         {
             if (_cachedBooks == null)
-                return new List<IBook>();
+                return new List<Book>();
 
             if (string.IsNullOrWhiteSpace(text))
                 return _cachedBooks;
@@ -144,7 +135,7 @@ namespace LibraryManagement
             if (e.RowIndex < 0)
                 return;
 
-            // عملیات حذف
+         
             if (dgv_book.Columns["colDelete"] != null && e.ColumnIndex == dgv_book.Columns["colDelete"].Index)
             {
                 if (dgv_book.Rows[e.RowIndex].Cells["Id"].Value is int id)
@@ -159,7 +150,7 @@ namespace LibraryManagement
                     {
                         try
                         {
-                            _repository.RemoveBook(id);
+                            _repository.DeleteBook(id);
                             LoadBooks();
                         }
                         catch (Exception ex)
@@ -171,7 +162,7 @@ namespace LibraryManagement
                 return;
             }
 
-            // عملیات ویرایش
+            
             if (dgv_book.Columns["colEdit"] != null && e.ColumnIndex == dgv_book.Columns["colEdit"].Index)
             {
                 if (dgv_book.Rows[e.RowIndex].Cells["Id"].Value is int id)

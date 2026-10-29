@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddForm));
             txt_title = new TextBox();
             txt_author = new TextBox();
@@ -45,6 +46,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -52,14 +54,14 @@
             // 
             // txt_title
             // 
-            txt_title.Location = new Point(109, 38);
+            txt_title.Location = new Point(80, 38);
             txt_title.Name = "txt_title";
             txt_title.Size = new Size(194, 27);
             txt_title.TabIndex = 0;
             // 
             // txt_author
             // 
-            txt_author.Location = new Point(109, 71);
+            txt_author.Location = new Point(80, 71);
             txt_author.Name = "txt_author";
             txt_author.Size = new Size(194, 27);
             txt_author.TabIndex = 1;
@@ -67,14 +69,14 @@
             // cmb_language
             // 
             cmb_language.FormattingEnabled = true;
-            cmb_language.Location = new Point(109, 104);
+            cmb_language.Location = new Point(80, 104);
             cmb_language.Name = "cmb_language";
             cmb_language.Size = new Size(194, 28);
             cmb_language.TabIndex = 3;
             // 
             // txt_isbn
             // 
-            txt_isbn.Location = new Point(109, 138);
+            txt_isbn.Location = new Point(80, 138);
             txt_isbn.Name = "txt_isbn";
             txt_isbn.Size = new Size(194, 27);
             txt_isbn.TabIndex = 4;
@@ -82,7 +84,7 @@
             // cmb_category
             // 
             cmb_category.FormattingEnabled = true;
-            cmb_category.Location = new Point(109, 171);
+            cmb_category.Location = new Point(80, 171);
             cmb_category.Name = "cmb_category";
             cmb_category.Size = new Size(194, 28);
             cmb_category.TabIndex = 5;
@@ -90,14 +92,14 @@
             // cmb_pulisheryear
             // 
             cmb_pulisheryear.FormattingEnabled = true;
-            cmb_pulisheryear.Location = new Point(109, 205);
+            cmb_pulisheryear.Location = new Point(80, 205);
             cmb_pulisheryear.Name = "cmb_pulisheryear";
             cmb_pulisheryear.Size = new Size(194, 28);
             cmb_pulisheryear.TabIndex = 6;
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(309, 269);
+            btn_add.Location = new Point(280, 269);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(94, 29);
             btn_add.TabIndex = 8;
@@ -109,7 +111,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.LightGray;
-            label1.Location = new Point(3, 3);
+            label1.Location = new Point(-26, 3);
             label1.Name = "label1";
             label1.Size = new Size(49, 20);
             label1.TabIndex = 9;
@@ -119,7 +121,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.LightGray;
-            label2.Location = new Point(3, 4);
+            label2.Location = new Point(-26, 4);
             label2.Name = "label2";
             label2.Size = new Size(87, 20);
             label2.TabIndex = 10;
@@ -129,7 +131,7 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.LightGray;
-            label3.Location = new Point(309, 104);
+            label3.Location = new Point(280, 104);
             label3.Name = "label3";
             label3.Size = new Size(56, 20);
             label3.TabIndex = 11;
@@ -139,7 +141,7 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.LightGray;
-            label4.Location = new Point(3, 3);
+            label4.Location = new Point(-26, 3);
             label4.Name = "label4";
             label4.Size = new Size(116, 20);
             label4.TabIndex = 12;
@@ -149,7 +151,7 @@
             // 
             label5.AutoSize = true;
             label5.BackColor = Color.LightGray;
-            label5.Location = new Point(309, 171);
+            label5.Location = new Point(280, 171);
             label5.Name = "label5";
             label5.Size = new Size(102, 20);
             label5.TabIndex = 13;
@@ -159,7 +161,7 @@
             // 
             label6.AutoSize = true;
             label6.BackColor = Color.LightGray;
-            label6.Location = new Point(309, 205);
+            label6.Location = new Point(280, 205);
             label6.Name = "label6";
             label6.Size = new Size(103, 20);
             label6.TabIndex = 14;
@@ -168,7 +170,7 @@
             // panel1
             // 
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(307, 138);
+            panel1.Location = new Point(278, 138);
             panel1.Name = "panel1";
             panel1.Size = new Size(123, 27);
             panel1.TabIndex = 15;
@@ -176,7 +178,7 @@
             // panel2
             // 
             panel2.Controls.Add(label2);
-            panel2.Location = new Point(307, 71);
+            panel2.Location = new Point(278, 71);
             panel2.Name = "panel2";
             panel2.Size = new Size(96, 27);
             panel2.TabIndex = 16;
@@ -184,10 +186,16 @@
             // panel3
             // 
             panel3.Controls.Add(label1);
-            panel3.Location = new Point(307, 38);
+            panel3.Location = new Point(278, 38);
             panel3.Name = "panel3";
             panel3.Size = new Size(58, 27);
             panel3.TabIndex = 17;
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // AddForm
             // 
@@ -208,6 +216,7 @@
             Controls.Add(cmb_language);
             Controls.Add(txt_author);
             Controls.Add(txt_title);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddForm";
             Text = "AddForm";
@@ -240,5 +249,6 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }

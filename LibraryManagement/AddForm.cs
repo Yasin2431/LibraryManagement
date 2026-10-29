@@ -10,7 +10,7 @@ namespace LibraryManagement
         private readonly int _id;
         private readonly bool _isEdit;
         private readonly string _database;
-        private BLL_Service _bookService; // استفاده از سرویس لایه BLL
+        private BLL_BookService _bookService; // استفاده از سرویس لایه BLL
 
         private static readonly object[] Languages = new object[] {
             "Persian", "English", "Arabic", "French", "German",
@@ -35,10 +35,10 @@ namespace LibraryManagement
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-            // مقداردهی سرویس BLL بر اساس نوع دیتابیس
-            _bookService = new BLL_Service(_database);
+            
+            _bookService = new BLL_BookService(_database);
 
-            // پر کردن کامبوباکس‌ها
+          
             cmb_language.BeginUpdate();
             cmb_category.BeginUpdate();
             cmb_pulisheryear.BeginUpdate();
@@ -66,7 +66,7 @@ namespace LibraryManagement
 
                 try
                 {
-                    IBook book = _bookService.GetBookById(_id);
+                    Book book = _bookService.GetBookById(_id);
                     if (book != null)
                     {
                         txt_title.Text = book.Title ?? string.Empty;
@@ -107,7 +107,7 @@ namespace LibraryManagement
 
             try
             {
-                // اعتبارسنجی از طریق BLL
+                
                 string[] errors = _bookService.Validation(title, author, isbn, _id);
 
                 if (errors != null && errors.Length > 0)
@@ -137,7 +137,7 @@ namespace LibraryManagement
                     return;
                 }
 
-                IBook bookData = new IBook(title, author, isbn)
+                Book bookData = new Book(title, author, isbn)
                 {
                     Id = _id,
                     Language = string.IsNullOrWhiteSpace(cmb_language.Text) ? "خالی" : cmb_language.Text.Trim(),
@@ -172,5 +172,7 @@ namespace LibraryManagement
                 MessageBox.Show("خطای غیرمنتظره:\n" + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
     }
 }

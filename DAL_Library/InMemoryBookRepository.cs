@@ -6,20 +6,20 @@ namespace LibraryManagement
 {
     public class InMemoryBookRepository : IBookRepository
     {
-        private static readonly List<IBook> _books = new List<IBook>();
+        private static readonly List<Book> _books = new List<Book>();
         private static int _nextId = 1;
 
-        public List<IBook> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
-            return new List<IBook>(_books);
+            return new List<Book>(_books);
         }
 
-        public IBook GetBookById(int id)
+        public Book GetBookById(int id)
         {
             return _books.FirstOrDefault(b => b.Id == id);
         }
 
-        public void AddBook(IBook book)
+        public void AddBook(Book book)
         {
             if (book == null)
                 return;
@@ -36,7 +36,7 @@ namespace LibraryManagement
 
         public bool DeleteBook(int id)
         {
-            IBook bookToDelete = _books.FirstOrDefault(b => b.Id == id);
+            Book bookToDelete = _books.FirstOrDefault(b => b.Id == id);
             if (bookToDelete != null)
             {
                 return _books.Remove(bookToDelete);
@@ -45,7 +45,7 @@ namespace LibraryManagement
             return false;
         }
 
-        public bool UpdateBook(IBook updatedBook)
+        public bool UpdateBook(Book updatedBook)
         {
             if (updatedBook == null || updatedBook.Id <= 0)
                 return false;

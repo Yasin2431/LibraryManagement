@@ -28,19 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChoseDatabaceForm));
-            cmb_Chose = new ComboBox();
+            cmb_ChoseDatabace = new ComboBox();
             btn_ChoseDatabace = new Button();
+            cmb_choseType = new ComboBox();
+            guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            guna2BorderlessForm2 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             SuspendLayout();
             // 
-            // cmb_Chose
+            // cmb_ChoseDatabace
             // 
-            cmb_Chose.FormattingEnabled = true;
-            cmb_Chose.Items.AddRange(new object[] { "SQL", "List" });
-            cmb_Chose.Location = new Point(108, 145);
-            cmb_Chose.Name = "cmb_Chose";
-            cmb_Chose.Size = new Size(151, 28);
-            cmb_Chose.TabIndex = 0;
+            cmb_ChoseDatabace.FormattingEnabled = true;
+            cmb_ChoseDatabace.Items.AddRange(new object[] { "SQL", "List" });
+            cmb_ChoseDatabace.Location = new Point(108, 145);
+            cmb_ChoseDatabace.Name = "cmb_ChoseDatabace";
+            cmb_ChoseDatabace.Size = new Size(151, 28);
+            cmb_ChoseDatabace.TabIndex = 0;
             // 
             // btn_ChoseDatabace
             // 
@@ -52,13 +56,36 @@
             btn_ChoseDatabace.UseVisualStyleBackColor = true;
             btn_ChoseDatabace.Click += btn_ChoseDatabace_Click;
             // 
+            // cmb_choseType
+            // 
+            cmb_choseType.FormattingEnabled = true;
+            cmb_choseType.Items.AddRange(new object[] { "کاربر جدید", "کتاب جدید", "مدیرت کتابخانه" });
+            cmb_choseType.Location = new Point(108, 183);
+            cmb_choseType.Name = "cmb_choseType";
+            cmb_choseType.Size = new Size(151, 28);
+            cmb_choseType.TabIndex = 2;
+            // 
+            // guna2BorderlessForm1
+            // 
+            guna2BorderlessForm1.ContainerControl = this;
+            guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
+            // guna2BorderlessForm2
+            // 
+            guna2BorderlessForm2.ContainerControl = this;
+            guna2BorderlessForm2.DockIndicatorTransparencyValue = 0.6D;
+            guna2BorderlessForm2.TransparentWhileDrag = true;
+            // 
             // ChoseDatabaceForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(340, 402);
+            Controls.Add(cmb_choseType);
             Controls.Add(btn_ChoseDatabace);
-            Controls.Add(cmb_Chose);
+            Controls.Add(cmb_ChoseDatabace);
+            FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ChoseDatabaceForm";
             Text = "ChoseDatabaceForm";
@@ -68,7 +95,10 @@
 
         #endregion
 
-        private ComboBox cmb_Chose;
+        private ComboBox cmb_ChoseDatabace;
         private Button btn_ChoseDatabace;
+        private ComboBox cmb_choseType;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm2;
     }
 }
