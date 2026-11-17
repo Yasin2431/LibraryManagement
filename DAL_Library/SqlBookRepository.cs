@@ -70,7 +70,7 @@ namespace LibraryManagement
 
                 connection.Open();
                 int rowsAffected = command.ExecuteNonQuery();
-                return rowsAffected > 0;
+                return rowsAffected > 0 || rowsAffected == -1; 
             }
         }
 

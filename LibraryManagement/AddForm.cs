@@ -35,8 +35,10 @@ namespace LibraryManagement
 
         private void AddForm_Load(object sender, EventArgs e)
         {
-            
-            _bookService = new BLL_BookService(_database);
+            string type = "کتاب جدید";//بابد اصلاح شود 
+
+
+            _bookService = new BLL_BookService(_database,type);
 
           
             cmb_language.BeginUpdate();

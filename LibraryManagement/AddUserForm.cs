@@ -24,7 +24,7 @@ namespace UI
             _userservice = new BLL_UserService(_databace, _type);
         }
         BLL_UserService _userservice;
-        User user = new User();
+        Member member = new Member();
         private void AddUserForm_Load(object sender, EventArgs e)
         {
            
@@ -57,9 +57,10 @@ namespace UI
         private void validation(string firstname, string lastname, string nationalcode, string phonenumber,PictureBox pictureBox1 )
         {
             byte[] photo = pictuerboxtobyte(pictureBox1);
-             user =new User(firstname, lastname, nationalcode, phonenumber, photo);
-            _userservice.AddUser()
+             member =new Member(firstname, lastname, nationalcode, phonenumber, photo);
+            _userservice.AddUser(member);
         }
+        
 
 
 

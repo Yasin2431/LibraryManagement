@@ -11,17 +11,17 @@ namespace BLL_Library
 
     public class BLL_BookService
     {
-        user user = new user();
+        Member member = new Member();
         private readonly IBookRepository _bookrepository;
         
 
-        // سازنده ۱: دریافت ریپوزیتوری آماده (برای تست و انعطاف)
+      
         public BLL_BookService(IBookRepository repository)
         {
             _bookrepository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
-        // سازنده ۲: دریافت نام دیتابیس از UI ("SQL" یا "Memory")
+     
         public BLL_BookService(string databaseType, string type)
         {
             if (databaseType == "SQL" && type == "کتاب جدید")
@@ -51,20 +51,17 @@ namespace BLL_Library
         }
         
 
-        // ۲. همه کتاب‌ها
         public List<Book> GetAllBooks()
         {
             return _bookrepository.GetAllBooks();
         }
 
-        // ۳. یک کتاب با آیدی
         public Book GetBookById(int id)
         {
             if (id <= 0) return null;
             return _bookrepository.GetBookById(id);
         }
 
-        // ۴. افزودن
         public void AddBook(Book book)
         {
             if (book == null)
@@ -73,7 +70,6 @@ namespace BLL_Library
             _bookrepository.AddBook(book);
         }
 
-        // ۵. ویرایش
         public bool UpdateBook(Book book)
         {
             if (book == null || book.Id <= 0)
@@ -82,7 +78,6 @@ namespace BLL_Library
             return _bookrepository.UpdateBook(book);
         }
 
-        // ۶. حذف
         public bool DeleteBook(int id)
         {
             if (id <= 0) return false;

@@ -4,10 +4,10 @@ using BLL_Library;
 
 namespace DAL_Library
 {
-    public class User
+    public class Member
     {
         
-        public User( string firstName, string lastName, string nationalCode, string phoneNumber, byte[]? photo = null)
+        public Member( string firstName, string lastName, string nationalCode, string phoneNumber, byte[]? photo = null)
         {
            
            
@@ -17,10 +17,7 @@ namespace DAL_Library
             PhoneNumber = phoneNumber;
             Photo = photo;
         }
-
-       
-
-        
+        public Member() { }
 
         public int Id { get; set; }
 

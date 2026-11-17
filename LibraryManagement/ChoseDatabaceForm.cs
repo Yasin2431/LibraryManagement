@@ -41,23 +41,17 @@ namespace LibraryManagement
             string userType = cmb_choseType.SelectedItem.ToString().Trim();
 
 
-            if (!string.IsNullOrEmpty(database))
+            if (!string.IsNullOrEmpty(database)& !string.IsNullOrEmpty(userType))
             {
                 this.Hide();
 
-                using (LibraryForm libraryForm = new LibraryForm(database))
+                using (LibraryForm libraryForm = new LibraryForm(database,userType))
                 {
                     libraryForm.ShowDialog();
                 }
-
-                
                 this.Close();
             }
-            if (!string.IsNullOrEmpty(userType)) 
-            {
-                this.Hide();
-                
-            }
+           
         }
     }
 }

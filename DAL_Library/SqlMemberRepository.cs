@@ -5,7 +5,7 @@ using System.Data;
 
 namespace DAL_Library
 {
-    public class SqlUserRepository : IUserRepository
+    public class SqlUserRepository : IMemberRepository
     {
         private readonly string _connectionString;
 
@@ -15,9 +15,9 @@ namespace DAL_Library
             _connectionString = connectionString;
         }
 
-        public List<user> GetAllUsers()
+        public List<Member> AllMember()
         {
-            var users = new List<user>();
+            var members = new List<Member>();
 
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.GetAllUsers", connection))
@@ -27,32 +27,32 @@ namespace DAL_Library
                 {
                     while (reader.Read())
                     {
-                        users.Add(MapReaderToUser(reader));
+                        members.Add(MapReaderToUser(reader));
                     }
                 }
             }
 
-            return users;
+            return members;
         }
 
-        public void AddUser(user user)
+        public void AddMember(Member member)
         {
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.AddUser", connection))
             {
-                AddUserParameters(command, user);
+                AddUserParameters(command, member);
                 connection.Open();
                 command.ExecuteNonQuery();
             }
         }
 
-        public bool UpdateUser(user user)
+        public bool UpdateMember(Member member)
         {
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.UpdateUser", connection))
             {
-                command.Parameters.AddWithValue("@Id", user.Id);
-                AddUserParameters(command, user);
+                command.Parameters.AddWithValue("@Id", member.Id);
+                AddUserParameters(command, member);
 
                 connection.Open();
                 int rows = command.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace DAL_Library
             }
         }
 
-        public bool DeleteUser(int id)
+        public bool DeleteMember(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.DeleteUser", connection))
@@ -73,7 +73,7 @@ namespace DAL_Library
             }
         }
 
-        public user? GetUserById(int id)
+        public Member? GetMemberById(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.GetUserById", connection))
@@ -89,11 +89,10 @@ namespace DAL_Library
                     }
                 }
             }
-
             return null;
         }
 
-        public user? GetUserByMembershipCode(string membershipCode)
+        public Member? GetMemberByMembershipCode(string membershipCode)
         {
             using (var connection = new SqlConnection(_connectionString))
             using (var command = CreateSpCommand("dbo.GetUserByMembershipCode", connection))
@@ -109,7 +108,6 @@ namespace DAL_Library
                     }
                 }
             }
-
             return null;
         }
 
@@ -125,7 +123,7 @@ namespace DAL_Library
 
                 connection.Open();
                 int count = Convert.ToInt32(command.ExecuteScalar());
-                return count == 0; // اگر صفر باشد یعنی تکراری نیست و مجاز است
+                return count == 0;
             }
         }
 
@@ -141,7 +139,7 @@ namespace DAL_Library
 
                 connection.Open();
                 int count = Convert.ToInt32(command.ExecuteScalar());
-                return count == 0; // اگر صفر باشد یعنی تکراری نیست و مجاز است
+                return count == 0;
             }
         }
 
@@ -155,22 +153,19 @@ namespace DAL_Library
             };
         }
 
-        private static void AddUserParameters(SqlCommand command, user user)
+        private static void AddUserParameters(SqlCommand command, Member member)
         {
-            command.Parameters.AddWithValue("@MembershipCode", user.MembershipCode?.Trim() ?? string.Empty);
-            command.Parameters.AddWithValue("@FirstName", user.FirstName?.Trim() ?? string.Empty);
-            command.Parameters.AddWithValue("@LastName", user.LastName?.Trim() ?? string.Empty);
-            command.Parameters.AddWithValue("@NationalCode", user.NationalCode?.Trim() ?? string.Empty);
-            command.Parameters.AddWithValue("@PhoneNumber", user.PhoneNumber?.Trim() ?? string.Empty);
-            command.Parameters.AddWithValue("@MembershipDate", user.MembershipDate);
-
-            // مدیریت ذخیره عکس به صورت باینری (در صورت خالی بودن DBNull قرار می‌گیرد)
-            command.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = (object?)user.Photo ?? DBNull.Value;
+            command.Parameters.AddWithValue("@MembershipCode", member.MembershipCode?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@FirstName", member.FirstName?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@LastName", member.LastName?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@NationalCode", member.NationalCode?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@PhoneNumber", member.PhoneNumber?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@MembershipDate", member.MembershipDate);
+            command.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = (object?)member.Photo ?? DBNull.Value;
         }
-
-        private static user MapReaderToUser(IDataRecord reader)
+        private static Member MapReaderToUser(IDataRecord reader)
         {
-            return new user
+            return new Member
             {
                 Id = reader["Id"] is DBNull ? 0 : Convert.ToInt32(reader["Id"]),
                 MembershipCode = reader["MembershipCode"] is DBNull ? string.Empty : reader["MembershipCode"].ToString()!,
@@ -182,6 +177,33 @@ namespace DAL_Library
                 Photo = reader["Photo"] is DBNull ? null : (byte[])reader["Photo"]
             };
         }
+        public List<Member> SearchMembers(string searchTerm)
+        {
+            var members = new List<Member>();
+            string query = @"SELECT * FROM Users 
+                     WHERE FirstName LIKE @term 
+                        OR LastName LIKE @term 
+                        OR NationalCode LIKE @term 
+                        OR MembershipCode LIKE @term";
+
+            using (var connection = new SqlConnection(_connectionString))
+            using (var command = new SqlCommand(query, connection))
+            {
+              
+                command.Parameters.AddWithValue("@term", $"%{searchTerm}%");
+
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        members.Add(MapReaderToUser(reader));
+                    }
+                }
+            }
+            return members;
+        }
+
 
         #endregion
     }
